@@ -1,0 +1,1153 @@
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20220301034739)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" varchar, "photo_id" varchar, "date_time" datetime, "comment_text" text)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220301034739"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePhotos (20220301034811)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "photos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" varchar, "date_time" datetime, "file_name" varchar)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220301034811"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20220301034823)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220301034823"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to LoadData (20220301035522)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to LoadData (20220301035522)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mComment Delete All (0.3ms)[0m  [1m[31mDELETE FROM "comments"[0m
+  [1m[36mPhoto Delete All (0.0ms)[0m  [1m[31mDELETE FROM "photos"[0m
+  [1m[36mUser Delete All (0.1ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mUser Create (0.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name") VALUES (?, ?)[0m  [["first_name", "Justin"], ["last_name", "Bieber"]]
+  [1m[36mUser Create (0.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name") VALUES (?, ?)[0m  [["first_name", "Paris"], ["last_name", "Hilton"]]
+  [1m[36mUser Create (0.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name") VALUES (?, ?)[0m  [["first_name", "Megan"], ["last_name", "Trainor"]]
+  [1m[36mUser Create (0.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name") VALUES (?, ?)[0m  [["first_name", "Barack"], ["last_name", "Obama"]]
+  [1m[36mUser Create (0.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name") VALUES (?, ?)[0m  [["first_name", "Santa"], ["last_name", "Claus"]]
+  [1m[36mUser Create (0.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name") VALUES (?, ?)[0m  [["first_name", "John"], ["last_name", "Ousterhout"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "6"], ["date_time", "2012-08-30 10:44:23"], ["file_name", "ouster.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "1"], ["date_time", "2009-09-13 20:00:00"], ["file_name", "bieber1.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "1"], ["date_time", "2009-09-13 20:05:03"], ["file_name", "bieber2.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "2"], ["date_time", "2013-11-18 18:02:00"], ["file_name", "hilton1.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "2"], ["date_time", "2013-09-20 17:30:00"], ["file_name", "hilton2.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "4"], ["date_time", "2009-07-10 16:02:49"], ["file_name", "obama1.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "4"], ["date_time", "2010-03-18 23:48:00"], ["file_name", "obama2.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "4"], ["date_time", "2010-08-30 14:26:00"], ["file_name", "obama3.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "3"], ["date_time", "2013-12-03 09:02:00"], ["file_name", "megan1.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "3"], ["date_time", "2013-12-03 09:03:00"], ["file_name", "megan2.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "5"], ["date_time", "2013-09-04 09:16:32"], ["file_name", "santa1.jpg"]]
+  [1m[36mPhoto Create (0.0ms)[0m  [1m[32mINSERT INTO "photos" ("user_id", "date_time", "file_name") VALUES (?, ?, ?)[0m  [["user_id", "4"], ["date_time", "2013-10-16 17:12:28"], ["file_name", "obama4.jpg"]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "6"], ["photo_id", "1"], ["date_time", "2012-09-02 14:01:00"], ["comment_text", "Learning new programming languages is hard..."]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "6"], ["photo_id", "1"], ["date_time", "2013-09-06 14:02:00"], ["comment_text", "This is another comment, with a bit more text; if the text gets long enough, does it wrap properly from line to line?"]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "6"], ["photo_id", "1"], ["date_time", "2013-09-08 14:06:00"], ["comment_text", "If you see this text in <b>boldface</b> then HTML escaping isn't working properly."]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "1"], ["photo_id", "2"], ["date_time", "2009-09-14 18:07:00"], ["comment_text", "No, people, she is *not* my mom.  She's my date."]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "6"], ["photo_id", "5"], ["date_time", "2013-11-28 17:45:13"], ["comment_text", "I came up with lots of comments for this photo, but unfortunately none of them are printable."]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "2"], ["photo_id", "7"], ["date_time", "2013-11-02 14:07:00"], ["comment_text", "Hey Barack, great form! Can u give me some bowling tips? xxoo Paris"]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "4"], ["photo_id", "7"], ["date_time", "2013-11-02 14:07:00"], ["comment_text", "Sure, let's get together when Lindsay gets out of rehab and I get healthcare.gov working."]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "4"], ["photo_id", "8"], ["date_time", "2010-09-06 13:59:33"], ["comment_text", "We're off to a Justin Bieber concert"]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "4"], ["photo_id", "12"], ["date_time", "2013-10-16 18:04:55"], ["comment_text", "He kept trying to tell me that healthcare.gov is fixed, but I could see as plain as day that they forgot a </div>. Can anyone tell me why we're building this site in Java instead of Rails?"]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "3"], ["photo_id", "10"], ["date_time", "2013-12-04 13:12:00"], ["comment_text", "To all my fans, I just want to say how Iam all about that base."]]
+  [1m[36mComment Create (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "photo_id", "date_time", "comment_text") VALUES (?, ?, ?, ?)[0m  [["user_id", "5"], ["photo_id", "11"], ["date_time", "2013-09-04 10:14:32"], ["comment_text", "I'm going to be watching how well you do in CS 6320!"]]
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220301035522"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-03-01 04:02:53.856905"], ["updated_at", "2022-03-01 04:02:53.856905"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-02-28 20:04:32 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/vijayreddy/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/vijayreddy/.asdf/installs/ruby/3.1.0/lib/ruby/gems/3.1.0/gems/railties-7.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 911)
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 7980)
+
+
+Started GET "/" for 127.0.0.1 at 2022-02-28 20:06:28 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 7520)
+  Rendered layout layouts/application.html.erb (Duration: 163.9ms | Allocations: 106175)
+Completed 200 OK in 172ms (Views: 165.2ms | ActiveRecord: 0.5ms | Allocations: 115328)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:30 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.7ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 38.8ms | Allocations: 26635)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 28946)
+Completed 200 OK in 52ms (Views: 42.3ms | ActiveRecord: 1.9ms | Allocations: 32093)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:32 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 3736)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 5876)
+Completed 200 OK in 23ms (Views: 21.0ms | ActiveRecord: 0.6ms | Allocations: 6697)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:34 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 21.1ms | Allocations: 3730)
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 5863)
+Completed 200 OK in 37ms (Views: 30.5ms | ActiveRecord: 0.6ms | Allocations: 6635)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:35 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 3730)
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 5883)
+Completed 200 OK in 42ms (Views: 39.0ms | ActiveRecord: 0.8ms | Allocations: 6640)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:36 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 3733)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 5875)
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 0.6ms | Allocations: 6633)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:36 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 3730)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 5860)
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 1.0ms | Allocations: 6632)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:36 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 3728)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 5881)
+Completed 200 OK in 22ms (Views: 19.3ms | ActiveRecord: 0.9ms | Allocations: 6638)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:36 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 3728)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 5869)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 6626)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:37 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 3728)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 5881)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.6ms | Allocations: 6638)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-02-28 20:06:37 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 3728)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 5887)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.6ms | Allocations: 6644)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-02-28 20:06:38 -0800
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1450)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 3715)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 3993)
+
+
+Started GET "/photos/index/2" for 127.0.0.1 at 2022-02-28 20:06:44 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "2"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "4"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "5"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 3776)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 5926)
+Completed 200 OK in 19ms (Views: 15.9ms | ActiveRecord: 0.8ms | Allocations: 6683)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:48 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 3955)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 6102)
+Completed 200 OK in 18ms (Views: 15.3ms | ActiveRecord: 1.0ms | Allocations: 6859)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:50 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 11.3ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 6094)
+Completed 200 OK in 18ms (Views: 14.9ms | ActiveRecord: 0.6ms | Allocations: 6851)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:50 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 6091)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.8ms | Allocations: 6849)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:51 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 6082)
+Completed 200 OK in 24ms (Views: 19.3ms | ActiveRecord: 0.6ms | Allocations: 6839)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:51 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 6097)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 6854)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:51 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 6091)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.2ms | Allocations: 6848)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:51 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 6088)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.3ms | Allocations: 6845)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:51 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 13.0ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 6103)
+Completed 200 OK in 20ms (Views: 16.8ms | ActiveRecord: 0.6ms | Allocations: 6860)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:52 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 6088)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 6845)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:52 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 6091)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.2ms | Allocations: 6848)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-02-28 20:06:52 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 11.4ms | Allocations: 3959)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 6109)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.3ms | Allocations: 6867)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-02-28 20:06:55 -0800
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3667)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.4ms | Allocations: 3943)
+
+
+Started GET "/photos/index/4" for 127.0.0.1 at 2022-02-28 20:06:58 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "4"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "6"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "7"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "8"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "12"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 8050)
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 10191)
+Completed 200 OK in 25ms (Views: 20.5ms | ActiveRecord: 1.1ms | Allocations: 10948)
+
+
+Started GET "/photos/index/2" for 127.0.0.1 at 2022-02-28 20:07:00 -0800
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "2"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "4"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "5"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 3776)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 5926)
+Completed 200 OK in 19ms (Views: 14.0ms | ActiveRecord: 0.8ms | Allocations: 6683)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-02-28 20:07:03 -0800
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3673)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.4ms | Allocations: 3948)
+
+
+Started GET "/" for 127.0.0.1 at 2022-04-24 18:04:14 -0700
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 7520)
+  Rendered layout layouts/application.html.erb (Duration: 36.4ms | Allocations: 45390)
+Completed 200 OK in 53ms (Views: 39.6ms | ActiveRecord: 0.5ms | Allocations: 54545)
+
+
+Started GET "/" for 127.0.0.1 at 2022-04-24 18:04:15 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 23.8ms | Allocations: 1557)
+  Rendered layout layouts/application.html.erb (Duration: 36.5ms | Allocations: 3912)
+Completed 200 OK in 38ms (Views: 36.9ms | ActiveRecord: 0.4ms | Allocations: 4245)
+
+
+Started GET "/photos/index/3" for 127.0.0.1 at 2022-04-24 18:04:18 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "3"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "9"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "10"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 32.7ms | Allocations: 24949)
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | Allocations: 27249)
+Completed 200 OK in 44ms (Views: 36.1ms | ActiveRecord: 1.8ms | Allocations: 30388)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:04:19 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1464)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3726)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.6ms | Allocations: 4045)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-04-24 18:04:21 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 3766)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | Allocations: 5896)
+Completed 200 OK in 19ms (Views: 15.5ms | ActiveRecord: 1.0ms | Allocations: 6676)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:04:22 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 21.9ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 3693)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.3ms | Allocations: 3969)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-04-24 18:06:03 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 3736)
+  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 5887)
+Completed 200 OK in 22ms (Views: 13.7ms | ActiveRecord: 0.6ms | Allocations: 6660)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:06:08 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 3679)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.4ms | Allocations: 3954)
+
+
+Started GET "/photos/index/2" for 127.0.0.1 at 2022-04-24 18:06:09 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "2"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "4"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "5"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 3808)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 5946)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.9ms | Allocations: 6703)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:06:11 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 3682)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.4ms | Allocations: 3957)
+
+
+Started GET "/photos/index/4" for 127.0.0.1 at 2022-04-24 18:06:12 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "4"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "6"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "7"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "8"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "12"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 23.3ms | Allocations: 8114)
+  Rendered layout layouts/application.html.erb (Duration: 26.5ms | Allocations: 10264)
+Completed 200 OK in 29ms (Views: 25.5ms | ActiveRecord: 1.7ms | Allocations: 11021)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:06:13 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 3678)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.4ms | Allocations: 3953)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-04-24 18:06:14 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 3971)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 6121)
+Completed 200 OK in 20ms (Views: 16.9ms | ActiveRecord: 0.7ms | Allocations: 6878)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:06:15 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 3678)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.3ms | Allocations: 3953)
+
+
+Started GET "/photos/index/1" for 127.0.0.1 at 2022-04-24 18:54:11 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "2"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "3"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  Rendered photo/index.html.erb within layouts/application (Duration: 15.8ms | Allocations: 3760)
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 5892)
+Completed 200 OK in 32ms (Views: 21.9ms | ActiveRecord: 1.3ms | Allocations: 7221)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:54:25 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1430)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 3686)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.7ms | Allocations: 3961)
+
+
+Started GET "/photos/index/2" for 127.0.0.1 at 2022-04-24 18:56:59 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "2"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "4"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "5"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 3774)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 5903)
+Completed 200 OK in 35ms (Views: 28.8ms | ActiveRecord: 0.8ms | Allocations: 6660)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:21 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3684)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 3959)
+
+
+Started GET "/photos/index/3" for 127.0.0.1 at 2022-04-24 18:57:23 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "3"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (3.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "9"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "10"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 17.1ms | Allocations: 3734)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 5875)
+Completed 200 OK in 25ms (Views: 19.1ms | ActiveRecord: 3.9ms | Allocations: 6632)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:26 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 3673)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.6ms | Allocations: 3948)
+
+
+Started GET "/photos/index/4" for 127.0.0.1 at 2022-04-24 18:57:27 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "4"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "6"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "7"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "8"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "12"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 20.9ms | Allocations: 8046)
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | Allocations: 10205)
+Completed 200 OK in 27ms (Views: 24.5ms | ActiveRecord: 1.1ms | Allocations: 10963)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:29 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 3676)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 3951)
+
+
+Started GET "/photos/index/5" for 127.0.0.1 at 2022-04-24 18:57:31 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "5"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "11"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 2623)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 4749)
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.4ms | Allocations: 5506)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:32 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 3673)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.4ms | Allocations: 3948)
+
+
+Started GET "/photos/index/6" for 127.0.0.1 at 2022-04-24 18:57:34 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "6"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "1"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 19.8ms | Allocations: 3953)
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 6094)
+Completed 200 OK in 32ms (Views: 29.6ms | ActiveRecord: 0.5ms | Allocations: 6851)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:35 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 3677)
+Completed 200 OK in 45ms (Views: 43.7ms | ActiveRecord: 0.4ms | Allocations: 3953)
+
+
+Started GET "/photos/index/2" for 127.0.0.1 at 2022-04-24 18:57:37 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "2"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "4"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "5"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 3780)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 5937)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.7ms | Allocations: 6696)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:39 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 3676)
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.4ms | Allocations: 3951)
+
+
+Started GET "/photos/index/3" for 127.0.0.1 at 2022-04-24 18:57:40 -0700
+Processing by PhotoController#index as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/photo_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering photo/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."user_id" = ?[0m  [["user_id", "3"]]
+  ↳ app/views/photo/index.html.erb:2:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "9"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = ?[0m  [["photo_id", "10"]]
+  ↳ app/views/photo/index.html.erb:6:in `each_with_index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/photo/index.html.erb:9
+  Rendered photo/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 3734)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 5869)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.5ms | Allocations: 6627)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-04-24 18:57:43 -0700
+Processing by UserController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/index.html.erb within layouts/application
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/user/index.html.erb:3
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1000]]
+  ↳ app/views/user/index.html.erb:11
+  Rendered user/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1420)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3664)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.3ms | Allocations: 3939)
+
+
